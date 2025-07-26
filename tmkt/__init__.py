@@ -122,12 +122,3 @@ class TMKT:
             "q": query
         }
         return await self._api._secondary_get("/bundesliga/searchwettbewerb/wettbewerb/L1", params=params, clean_html_name=True)
-    
-
-    
-
-    
-    
-
-
-    
