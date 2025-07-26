@@ -6,7 +6,7 @@ README = (HERE / "README.md").read_text()
 
 setup(
     name="transfermarkt-wrapper",
-    version="0.0.1",  
+    version="0.0.2",  
     description="Python API wrapper for Transfermarkt undocumented API",
     long_description=README,
     long_description_content_type="text/markdown",
@@ -28,6 +28,7 @@ setup(
     include_package_data=True,
     install_requires=[
         "aiohttp>=3.8.0",  
+        "beautifulsoup4>=4.9.3"
     ],
     python_requires=">=3.8",
     keywords="transfermarkt tmk football soccer fotmob sofascore flashscore api wrapper",
