@@ -2,6 +2,8 @@
 
 A Python wrapper for the Transfermarkt API, providing easy access to football (soccer) data including players, clubs, competitions, transfers, and more.
 
+[![PyPI Downloads](https://static.pepy.tech/badge/transfermarkt-wrapper)](https://pepy.tech/projects/transfermarkt-wrapper)
+
 ## Features
 
 - **Player Data**: Transfers, injuries, profiles
