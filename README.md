@@ -48,6 +48,7 @@ asyncio.run(main())
 | `get_player(playerId: int)` | Get player profile | `get_player(433177)` |
 | `get_player_transfers(playerId: int)` | Get player's transfer history | `get_player_transfers(433177)` |
 | `get_player_injuries(playerId: int)` | Get player's injury history | `get_player_injuries(433177)` |
+| `get_player_stats(playerId: int, season: int = None)` | Get player's seasonal stats | `get_player_stats(262749)` |
 | `player_search(query: str)` | Search players by name | `player_search("Saka")` |
 
 ### Club Endpoints

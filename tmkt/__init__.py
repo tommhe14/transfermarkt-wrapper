@@ -123,3 +123,10 @@ class TMKT:
             "q": query
         }
         return await self._api._secondary_get("/bundesliga/searchwettbewerb/wettbewerb/L1", params=params, clean_html_name=True)
+    
+    async def get_player_stats(self, playerId: int, season: int = None)  -> Dict[str, Any]:
+        """
+        Get a players stats for the current season or a specific season
+        """
+        url = f"/player/{playerId}/performance?season={season}" if season else f"/player/{playerId}/performance"
+        return await self._api._get(url) 
