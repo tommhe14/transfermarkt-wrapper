@@ -65,10 +65,11 @@ asyncio.run(main())
 
 | Method | Description | Example |
 |--------|-------------|---------|
-| `get_competition(competitionId: int)` | Get competition profile | `get_competition("GB1")` |
-| `get_competition_transfers(competitionId: int)` | Get competition transfers | `get_competition_transfers("GB1")` |
-| `get_competition_clubs(competitionId: int)` | Get participating clubs | `get_competition_clubs("GB1")` |
-| `get_competition_table(competitionId: int)` | Get current standings | `get_competition_table("GB1")` |
+| `get_competition(competitionId: str)` | Get competition profile | `get_competition("GB1")` |
+| `get_competition_transfers(competitionId: str)` | Get competition transfers | `get_competition_transfers("GB1")` |
+| `get_competition_clubs(competitionId: str)` | Get participating clubs | `get_competition_clubs("GB1")` |
+| `get_competition_table(competitionId: str)` | Get current standings | `get_competition_table("GB1")` |
+| `get_current_season(competitionId: str)` | Get league current season | `get_current_season("GB1")` |
 | `league_search(query: str)` | Search leagues by name | `league_search("Premier League")` |
 
 ### General Endpoints

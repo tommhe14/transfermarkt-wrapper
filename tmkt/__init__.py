@@ -33,7 +33,7 @@ class TMKT:
         """
         return await self._api._get(f"/transfer/history/club/{clubId}")
     
-    async def get_competition_transfers(self, competitionId: int)  -> Dict[str, Any]:
+    async def get_competition_transfers(self, competitionId: str)  -> Dict[str, Any]:
         """
         Get a competitions full transfer history
         """
@@ -51,7 +51,7 @@ class TMKT:
         """
         return await self._api._get(f"/club/{clubId}")
     
-    async def get_competition(self, competitionId: int)  -> Dict[str, Any]:
+    async def get_competition(self, competitionId: str)  -> Dict[str, Any]:
         """
         Get a competitions profile with general data.
         """
@@ -69,13 +69,13 @@ class TMKT:
         """
         return await self._api._get(f"/club/{clubId}/stadium")
     
-    async def get_competition_clubs(self, competitionId: int)  -> Dict[str, Any]:
+    async def get_competition_clubs(self, competitionId: str)  -> Dict[str, Any]:
         """
         Get a competitions list of clubs
         """
         return await self._api._get(f"/competition/{competitionId}/club")
     
-    async def get_competition_table(self, competitionId: int)  -> Dict[str, Any]:
+    async def get_competition_table(self, competitionId: str)  -> Dict[str, Any]:
         """
         Get a clubs table standings.
         """
@@ -124,9 +124,20 @@ class TMKT:
         }
         return await self._api._secondary_get("/bundesliga/searchwettbewerb/wettbewerb/L1", params=params, clean_html_name=True)
     
-    async def get_player_stats(self, playerId: int, season: int = None)  -> Dict[str, Any]:
+    async def get_player_stats(self, playerId: int, season: int = None) -> Dict[str, Any]:
         """
         Get a players stats for the current season or a specific season
         """
         url = f"/player/{playerId}/performance?season={season}" if season else f"/player/{playerId}/performance"
         return await self._api._get(url) 
+    
+    async def get_current_season(self, competitionId: str) -> int:
+        """
+        Get a competition's current season id to use elsewhere
+        """
+        leagueData = await self.get_competition(competitionId)
+
+        if leagueData:
+            return leagueData.get("data", {}).get("currentSeason", {}).get("id", None)
+        
+        return None
