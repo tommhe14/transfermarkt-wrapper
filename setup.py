@@ -6,7 +6,7 @@ README = (HERE / "README.md").read_text()
 
 setup(
     name="transfermarkt-wrapper",
-    version="0.0.5",  
+    version="0.0.6",  
     description="Python API wrapper for Transfermarkt undocumented API",
     long_description=README,
     long_description_content_type="text/markdown",

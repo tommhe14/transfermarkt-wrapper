@@ -72,6 +72,12 @@ asyncio.run(main())
 | `get_current_season(competitionId: str)` | Get league current season | `get_current_season("GB1")` |
 | `league_search(query: str)` | Search leagues by name | `league_search("Premier League")` |
 
+### Match Endpoints
+
+| Method | Description | Example |
+|--------|-------------|---------|
+| `get_match(matchId: int)` | Get match details | `get_match(4625790)` |
+
 ### General Endpoints
 
 | Method | Description | Example |

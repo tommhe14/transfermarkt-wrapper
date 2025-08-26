@@ -141,3 +141,10 @@ class TMKT:
             return leagueData.get("data", {}).get("currentSeason", {}).get("id", None)
         
         return None
+    
+    async def get_match(self, matchId: int) -> Dict[str, Any]:
+        """
+        Get match details. Game actions are in German (DE) but can be easily translated 
+        using a library such as deep-translator 
+        """
+        return await self._api._get(f"/game/{matchId}")
