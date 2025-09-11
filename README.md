@@ -48,7 +48,8 @@ asyncio.run(main())
 | `get_player(playerId: int)` | Get player profile | `get_player(433177)` |
 | `get_player_transfers(playerId: int)` | Get player's transfer history | `get_player_transfers(433177)` |
 | `get_player_injuries(playerId: int)` | Get player's injury history | `get_player_injuries(433177)` |
-| `get_player_stats(playerId: int, season: int = None)` | Get player's seasonal stats | `get_player_stats(262749)` |
+| `get_player_stats(playerId: int, season: int = None)` | Get player's seasonal stats | `get_player_stats(433177)` |
+| `get_player_news(playerId: int)` | Get player relevant news | `get_player_news(433177)` |
 | `player_search(query: str)` | Search players by name | `player_search("Saka")` |
 
 ### Club Endpoints
@@ -59,7 +60,8 @@ asyncio.run(main())
 | `get_club_transfers(clubId: int)` | Get club's transfer history | `get_club_transfers(11)` |
 | `get_club_squad(clubId: int)` | Get current squad | `get_club_squad(11)` |
 | `get_club_stadium(clubId: int)` | Get stadium info | `get_club_stadium(11)` |
-| `team_search(query: str)` | Search clubs by name | `team_search("Arsenal")` |
+| `get_club_news(clubId: int)` | Get club relevant news | `get_club_news(11)` |
+| `club_search(query: str)` | Search clubs by name | `club_search("Arsenal")` |
 
 ### Competition Endpoints
 
@@ -70,7 +72,9 @@ asyncio.run(main())
 | `get_competition_clubs(competitionId: str)` | Get participating clubs | `get_competition_clubs("GB1")` |
 | `get_competition_table(competitionId: str)` | Get current standings | `get_competition_table("GB1")` |
 | `get_current_season(competitionId: str)` | Get league current season | `get_current_season("GB1")` |
-| `league_search(query: str)` | Search leagues by name | `league_search("Premier League")` |
+| `get_competition_news(competitionId: str)` | Get competition relevant news | `get_competition_news("GB1")` |
+| `competition_search(query: str)` | Search leagues by name | `competition_search("Premier League")` |
+
 
 ### Match Endpoints
 
@@ -83,3 +87,5 @@ asyncio.run(main())
 | Method | Description | Example |
 |--------|-------------|---------|
 | `get_all_transfers()` | Get latest transfers | `get_all_transfers()` |
+| `get_coach(coachId: int)` | Get coach details | `get_coach(7451)` |
+| `get_coach_news(coachId: int)` | Get coach relevant news | `get_coach_news(7451)` |

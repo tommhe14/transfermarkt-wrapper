@@ -75,11 +75,16 @@ class TMKT:
         """
         return await self._api._get(f"/competition/{competitionId}/club")
     
-    async def get_competition_table(self, competitionId: str)  -> Dict[str, Any]:
+    async def get_competition_table(self, competitionId: str, seasonId: int = None)  -> Dict[str, Any]:
         """
-        Get a clubs table standings.
+        Get a competitions table standings.
         """
-        return await self._api._get(f"/competition/{competitionId}/table")
+        url = f"/competition/{competitionId}/table"
+
+        if seasonId:
+            url += f"?season={seasonId}"
+
+        return await self._api._get(url)
     
     async def get_club_squad(self, clubId: int)  -> Dict[str, Any]:
         """
@@ -108,6 +113,7 @@ class TMKT:
         """
         Search for a player by name (e.g., "Saka").
         Example URL: https://www.transfermarkt.co.uk/spieler/searchSpielerDaten?q=saka
+        Backup URL: https://www.transfermarkt.co.uk/search/spieler?id=text&data[q]=saka
         """
         params = {
             "q": query
@@ -148,3 +154,33 @@ class TMKT:
         using a library such as deep-translator 
         """
         return await self._api._get(f"/game/{matchId}")
+    
+    async def get_coach(self, coachId: int) -> Dict[str, Any]:
+        """
+        Get coach details.
+        """
+        return await self._api._get(f"/coach/{coachId}")
+    
+    async def get_player_news(self, playerId: int)  -> Dict[str, Any]:
+        """
+        Get a news relevant to your provided player
+        """
+        return await self._api._secondary_get(f"/ceapi/RelevantNews/player/{playerId}")
+    
+    async def get_coach_news(self, coachId: int)  -> Dict[str, Any]:
+        """
+        Get a news relevant to your provided coach
+        """
+        return await self._api._secondary_get(f"/ceapi/RelevantNews/trainer/{coachId}")
+    
+    async def get_club_news(self, clubId: int)  -> Dict[str, Any]:
+        """
+        Get a news relevant to your provided club
+        """
+        return await self._api._secondary_get(f"/ceapi/RelevantNews/team/{clubId}")
+    
+    async def get_competition_news(self, competitionId: str)  -> Dict[str, Any]:
+        """
+        Get a news relevant to your provided competition
+        """
+        return await self._api._secondary_get(f"/ceapi/RelevantNews/competition/{competitionId}")
