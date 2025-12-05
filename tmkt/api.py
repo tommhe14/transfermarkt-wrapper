@@ -8,6 +8,7 @@ class TMKTAPIClient:
     def __init__(self):
         self.base_url = "https://tmapi-alpha.transfermarkt.technology"
         self.secondary_url = "https://www.transfermarkt.co.uk"
+        self.third_url = "https://www.transfermarkt.co.uk/ceapi"
         self.headers = {
             "accept": "application/json, text/plain, */*",
             "accept-language": "en-US,en;q=0.9",
@@ -60,6 +61,18 @@ class TMKTAPIClient:
                 return data
         except Exception as e:
             raise Exception(f"Request to {url} failed: {str(e)}")
+        
+    async def third_get(self, endpoint: str, params: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+        """Base request method"""
+        await self._ensure_session()  
+        
+        url = f"{self.third_url}{endpoint}"
+        try:
+            async with self.session.get(url, params=params) as response:
+                response.raise_for_status()
+                return await response.json()
+        except Exception as e:
+            raise Exception(f"API request to {url} failed: {str(e)}")
 
     async def close(self):
         """Close the session"""

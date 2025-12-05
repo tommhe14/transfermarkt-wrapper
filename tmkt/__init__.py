@@ -135,7 +135,25 @@ class TMKT:
         Get a players stats for the current season or a specific season
         """
         url = f"/player/{playerId}/performance?season={season}" if season else f"/player/{playerId}/performance"
-        return await self._api._get(url) 
+        return await self._api.third_get(url) 
+    
+    async def get_player_stats_per_club(self, playerId: int) -> Dict[str, Any]:
+        """
+        Get a players stats per club in their career.
+        """
+        return await self._api.third_get(f"/player/{playerId}/performanceperclub") 
+    
+    async def get_player_stats_per_competition(self, playerId: int) -> Dict[str, Any]:
+        """
+        Get a players stats per competition in their career.
+        """
+        return await self._api.third_get(f"/player/{playerId}/performancepercompetition") 
+    
+    async def get_player_stats_national_career(self, playerId: int) -> Dict[str, Any]:
+        """
+        Get a players national career stats.
+        """
+        return await self._api._get(f"/player/{playerId}/national-career-history") 
     
     async def get_current_season(self, competitionId: str) -> int:
         """
